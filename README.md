@@ -14,3 +14,7 @@ These compose-files are used for deploying gameserver-stacks on docker-swarm wit
 
 
 `$ docker network create -d macvlan --scope swarm --config-from confignet swarm-macvlan`
+
+3. Deploy stack
+
+`$ docker stack deploy -c csgo.yml`
