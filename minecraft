@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  minecraft:
+    image: rlenferink/minecraft
+#    volumes:
+#      - /data/minecraft:/data 
+    restart: always
+    deploy:
+      placement:
+          constraints: [node.role == worker]
+
+networks:
+  default:
+    external:
+      name: swarm-macvlan
