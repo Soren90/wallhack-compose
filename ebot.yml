@@ -1,0 +1,89 @@
+version: '3.3'
+
+services:
+  ebot:
+    image: hsfactory/ebot
+    restart: always
+    links:
+      - "mysql:mysql"
+    ports:
+      - "12360:12360"
+      - "12361:12361"
+      - "12360:12360/udp"
+      - "12361:12361/udp"
+    volumes:
+      - /data/csgo/logs:/ebot/logs
+      - /data/csgo/demos:/ebot/demos
+    environment:
+      EXTERNAL_IP: '10.2.1.19'
+      MYSQL_HOST: 'mysql'
+      MYSQL_PORT: '3306'
+      MYSQL_DB: 'ebotv3'
+      MYSQL_USER: 'ebotv3'
+      MYSQL_PASS: 'ebotv3'
+      LO3_METHOD: 'restart'
+      KO3_METHOD: 'restart'
+      DEMO_DOWNLOAD: 'true'
+      REMIND_RECORD: 'false'
+      DAMAGE_REPORT: 'true'
+      DELAY_READY: 'false'
+      NODE_STARTUP_METHOD: 'node'
+      USE_DELAY_END_RECORD: 'true'
+      TOORNAMENT_PLUGIN_KEY: ''
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+ 
+
+  ebotweb:
+    image: hsfactory/ebotweb
+    restart: always
+    links:
+      - "mysql:mysql"
+    ports:
+      - "80:80"
+    volumes:
+      - /data/csgo/demos:/opt/ebot/demos
+      - /data/csgo/logs:/opt/ebot/logs
+    environment:
+      EBOT_IP: '10.2.1.19'
+      EBOT_PORT: '12360'
+      EBOT_ADMIN_USER: 'admin'
+      EBOT_ADMIN_PASS: 'password'
+      EBOT_ADMIN_MAIL: ''
+      MYSQL_HOST: 'mysql'
+      MYSQL_PORT: '3306'
+      MYSQL_DB: 'ebotv3'
+      MYSQL_USER: 'ebotv3'
+      MYSQL_PASS: 'ebotv3'
+      DEMO_DOWNLOAD: 'true'
+      DEFAULT_RULES: 'esl5on5'
+      TOORNAMENT_ID: ''
+      TOORNAMENT_SECRET: ''
+      TOORNAMENT_API_KEY: ''
+      TOORNAMENT_PLUGIN_KEY: ''
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+ 
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - /data/csgo/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_DATABASE=ebotv3
+      - MYSQL_USER=ebotv3
+      - MYSQL_PASSWORD=ebotv3
+      - MYSQL_ROOT_PASSWORD=MyAwesomePassword
+      - MYSQL_ROOT_HOST=%
+    command: mysqld --sql_mode="NO_ENGINE_SUBSTITUTION"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
