@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   csgo:
-    image: registry.teamzone.se/csgo/csgo-lan:0.1
+    image: didstopia/rust-server:latest
     volumes:
       - /data/rust:/steamcmd/rust
     restart: always
