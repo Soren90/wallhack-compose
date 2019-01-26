@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  csgo:
+    image: registry.teamzone.se/csgo/csgo-lan:0.1
+#    volumes:
+#      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      HOSTNAME: wallhacktest
+      MAP: de_dust2
+      rcon: 123
+    deploy:
+      placement:
+          constraints: [node.role == worker]
+
+networks:
+  default:
+    external:
+      name: swarm-macvlan
