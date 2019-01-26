@@ -3,8 +3,11 @@ version: '3.3'
 services:
   csgo:
     image: registry.teamzone.se/csgo/csgo-lan:0.1
-#    volumes:
-#      - db_data:/var/lib/mysql
+    volumes:
+      - /data/csgo/cfg/esl5on5.cfg:/server/csgo/csgo/cfg/esl5on5.cfg
+      - /data/csgo/cfg/server.cfg:/server/csgo/csgo/cfg/server.cfg
+      - /data/csgo/cfg/gamemode_competitive_server.cfg:/server/csgo/csgo/cfg/gamemode_competitive_server.cfg
+      - /data/csgo/cfg/gotv.cfg:/server/csgo/csgo/cfg/gotv.cfg
     restart: always
     environment:
       HOSTNAME: wallhacktest
