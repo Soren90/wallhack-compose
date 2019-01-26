@@ -1,7 +1,8 @@
 # Wallhack lan
 
-These compose-files are used for deploying gameserver-stacks on docker-swarm with a macvlan network.
+Some games, like HLDS servers don't like to change port with the -p argument and we also like pretty DNS-names for our LAN-servers. For that reason, macvlan was the perfect match.
 
+These compose-files are used for deploying gameserver-stacks on docker-swarm with a macvlan network.
 
 ## Install macvlan in docker-swarm
 
