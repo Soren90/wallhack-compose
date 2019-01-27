@@ -42,7 +42,7 @@ services:
     links:
       - "mysql:mysql"
     ports:
-      - "80:80"
+      - "8090:80"
     volumes:
       - /data/csgo/demos:/opt/ebot/demos
       - /data/csgo/logs:/opt/ebot/logs
