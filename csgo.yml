@@ -3,6 +3,8 @@ version: '3.3'
 services:
   csgo:
     image: registry.teamzone.se/csgo/csgo-lan:0.1
+    stdin_open: true
+    tty: true
     volumes:
       - /data/csgo/cfg/esl5on5.cfg:/server/csgo/csgo/cfg/esl5on5.cfg
       - /data/csgo/cfg/server.cfg:/server/csgo/csgo/cfg/server.cfg
