@@ -27,7 +27,7 @@ services:
       ENV RUST_SERVER_SAVE_INTERVAL "600"
     deploy:
       placement:
-          constraints: [node.role == worker]
+          constraints: [node.labels == compute]
 
 networks:
   default:
