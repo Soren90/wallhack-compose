@@ -8,7 +8,7 @@ services:
     restart: always
     deploy:
       placement:
-          constraints: [node.labels == compute]
+          constraints: [node.labels.usage==game]
 
 networks:
   default:
