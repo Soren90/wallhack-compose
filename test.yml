@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  csgo:
+    image: robertxie/ubuntu-nettools
+    deploy:
+      placement:
+          constraints: [node.role == worker]
+
+networks:
+  default:
+    external:
+      name: swarm-macvlan
