@@ -239,3 +239,7 @@ services:
     deploy:
       placement:
         constraints: [node.labels.usage==cache]
+networks:
+  default:
+    external:
+      name: bridge
