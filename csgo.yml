@@ -12,7 +12,7 @@ services:
     environment:
       HOSTNAME: wallhacktest
       MAP: de_dust2
-      rcon: 123
+      RCON: 123
     deploy:
       placement:
           constraints: [node.role == worker]
