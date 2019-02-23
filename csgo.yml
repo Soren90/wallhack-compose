@@ -17,7 +17,7 @@ services:
       RCON: pDjvm6Ugx3
     deploy:
       placement:
-          constraints: [node.labels == compute]
+          constraints: [node.labels.usage==game]
 
 networks:
   default:
