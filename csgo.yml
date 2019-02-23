@@ -10,7 +10,7 @@ services:
       - /data/csgo/cfg/gotv.cfg:/server/csgo/csgo/cfg/gotv.cfg
     restart: always
     environment:
-      HOSTNAME: wallhacktest
+      HOSTNAME: Wallhack
       MAP: de_dust2
       RCON: 123
     deploy:
