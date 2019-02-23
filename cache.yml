@@ -8,11 +8,17 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     env_file: /data/cache/.env
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   sniproxy:
     image: steamcache/sniproxy:latest
     env_file: /data/cache/.env
     ports:
       - 443:443/tcp
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   apple:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -21,6 +27,9 @@ services:
       - ${CACHE_ROOT}/apple/logs:/data/logs
     environment:
       - VIRTUAL_HOST=swcdn.apple.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   arenanet:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -29,6 +38,9 @@ services:
       - ${CACHE_ROOT}/arenanet/logs:/data/logs
     environment:
       - VIRTUAL_HOST=assetcdn.101.arenanetworks.com,assetcdn.102.arenanetworks.com,assetcdn.103.arenanetworks.com,live.patcher.bladeandsoul.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   blizzard:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -37,6 +49,9 @@ services:
       - ${CACHE_ROOT}/blizzard/logs:/data/logs
     environment:
       - VIRTUAL_HOST=dist.blizzard.com,dist.blizzard.com.edgesuite.net,llnw.blizzard.com,edgecast.blizzard.com,blizzard.vo.llnwd.net,blzddist1-a.akamaihd.net,blzddist2-a.akamaihd.net,blzddist3-a.akamaihd.net,blzddist4-a.akamaihd.net,level3.blizzard.com,nydus.battle.net,edge.blizzard.top.comcast.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   daybreak:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -45,6 +60,9 @@ services:
       - ${CACHE_ROOT}/daybreak/logs:/data/logs
     environment:
       - VIRTUAL_HOST=pls.patch.daybreakgames.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   frontier:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -53,6 +71,9 @@ services:
       - ${CACHE_ROOT}/frontier/logs:/data/logs
     environment:
       - VIRTUAL_HOST=cdn.zaonce.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   hirez:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -61,6 +82,9 @@ services:
       - ${CACHE_ROOT}/hirez/logs:/data/logs
     environment:
       - VIRTUAL_HOST=hirez.http.internapcdn.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   minecraft:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -69,6 +93,9 @@ services:
       - ${CACHE_ROOT}/minecraft/logs:/data/logs
     environment:
       - VIRTUAL_HOST=*.download.minecraft.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   nexusmods:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -77,6 +104,9 @@ services:
       - ${CACHE_ROOT}/nexusmods/logs:/data/logs
     environment:
       - VIRTUAL_HOST=filedelivery.nexusmods.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   nintendo:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -85,6 +115,9 @@ services:
       - ${CACHE_ROOT}/nintendo/logs:/data/logs
     environment:
       - VIRTUAL_HOST=ccs.cdn.wup.shop.nintendo.com,pushmo.hac.lp1.eshop.nintendo.net,ecs-lp1.hac.shop.nintendo.net,receive-lp1.dg.srv.nintendo.net,aqua.hac.lp1.d4c.nintendo.net,atum.hac.lp1.d4c.nintendo.net,bugyo.hac.lp1.eshop.nintendo.net,tagaya.hac.lp1.eshop.nintendo.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   origin:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -93,6 +126,9 @@ services:
       - ${CACHE_ROOT}/origin/logs:/data/logs
     environment:
       - VIRTUAL_HOST=origin-a.akamaihd.net,akamai.cdn.ea.com,lvlt.cdn.ea.com,river.data.ea.com,origin-a.akamaihd.net.edgesuite.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   renegadex:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -101,6 +137,9 @@ services:
       - ${CACHE_ROOT}/renegadex/logs:/data/logs
     environment:
       - VIRTUAL_HOST=rxp-fl.cncirc.net,rxp-chi.cncirc.net,rxp-nz.cncirc.net,rxp-bgr.cncirc.net,rxp-fr.cncirc.net,rxp-nyc.cncirc.net,rxp-uk.cncirc.net,rxp-sg.cncirc.net,rxp-la.cncirc.net,rxp-fin.cncirc.net,denver1.renegade-x.com,seattle1.renegade-x.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   riot:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -109,6 +148,9 @@ services:
       - ${CACHE_ROOT}/riot/logs:/data/logs
     environment:
       - VIRTUAL_HOST=l3cdn.riotgames.com,worldwide.l3cdn.riotgames.com,riotgamespatcher-a.akamaihd.net,riotgamespatcher-a.akamaihd.net.edgesuite.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   rockstar:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -117,6 +159,9 @@ services:
       - ${CACHE_ROOT}/rockstar/logs:/data/logs
     environment:
       - VIRTUAL_HOST=patches.rockstargames.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   sony:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -125,6 +170,9 @@ services:
       - ${CACHE_ROOT}/sony/logs:/data/logs
     environment:
       - VIRTUAL_HOST=pls.patch.station.sony.com,gs2.ww.prod.dl.playstation.net,gs2.sonycoment.loris-e.llnwd.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   steam:
     image: steamcache/${STEAMCACHE_CONTAINER}:latest
     env_file: /data/cache/.env
@@ -133,6 +181,9 @@ services:
       - ${CACHE_ROOT}/steam/logs:/data/logs
     environment:
       - VIRTUAL_HOST=*.content.steampowered.com,content1.steampowered.com,content2.steampowered.com,content3.steampowered.com,content4.steampowered.com,content5.steampowered.com,content6.steampowered.com,content7.steampowered.com,content8.steampowered.com,cs.steampowered.com,steamcontent.com,client-download.steampowered.com,*.hsar.steampowered.com.edgesuite.net,*.akamai.steamstatic.com,content-origin.steampowered.com,clientconfig.akamai.steamtransparent.com,steampipe.akamaized.net,edgecast.steamstatic.com,steam.apac.qtlglb.com.mwcloudcdn.com,*.cs.steampowered.com,*.edgecast.steamstatic.com,*.steamcontent.com,cdn1-sea1.valve.net,cdn2-sea1.valve.net,*.steam-content-dnld-1.apac-1-cdn.cqloud.com,steam.apac.qtlglb.com,edge.steam-dns.top.comcast.net,edge.steam-dns-2.top.comcast.net,steamcdn-a.akamaihd.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   uplay:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -141,6 +192,9 @@ services:
       - ${CACHE_ROOT}/uplay/logs:/data/logs
     environment:
       - VIRTUAL_HOST=*.cdn.ubi.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   twitch:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -149,6 +203,9 @@ services:
       - ${CACHE_ROOT}/twitch/logs:/data/logs
     environment:
       - VIRTUAL_HOST=d3rmjivj4k4f0t.cloudfront.net,addons.forgesvc.net,media.forgecdn.net,files.forgecdn.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   wargaming:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -157,6 +214,9 @@ services:
       - ${CACHE_ROOT}/wargaming/logs:/data/logs
     environment:
       - VIRTUAL_HOST=dl.wargaming.net,dl2.wargaming.net,wg.gcdn.co,wargaming.net.edgesuite.ne,wgusst-na.wargaming.net,wgusst-eu.wargaming.net,update-v4r4h10x.worldofwarships.com,dl-wows-ak.wargaming.net,wgus-wotasia.wargaming.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   wsus:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -165,6 +225,9 @@ services:
       - ${CACHE_ROOT}/wsus/logs:/data/logs
     environment:
       - VIRTUAL_HOST=officecdn.microsoft.com,windowsupdate.com,*.windowsupdate.com,dl.delivery.mp.microsoft.com,*.dl.delivery.mp.microsoft.com
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
   xboxlive:
     image: steamcache/generic:latest
     env_file: /data/cache/.env
@@ -173,3 +236,6 @@ services:
       - ${CACHE_ROOT}/xboxlive/logs:/data/logs
     environment:
       - VIRTUAL_HOST=assets1.xboxlive.com,assets2.xboxlive.com,dlassets.xboxlive.com,xboxone.loris.llnwd.net,*.xboxone.loris.llnwd.net,xboxone.vo.llnwd.net,images-eds.xboxlive.com,xbox-mbr.xboxlive.com,assets1.xboxlive.com.nsatc.net
+    deploy:
+      placement:
+        constraints: [node.labels.usage==cache]
