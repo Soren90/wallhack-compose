@@ -28,8 +28,3 @@ services:
     deploy:
       placement:
           constraints: [node.labels.usage==game]
-
-networks:
-  default:
-    external:
-      name: swarm-macvlan
