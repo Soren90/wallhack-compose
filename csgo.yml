@@ -10,6 +10,7 @@ services:
       - /data/csgo/cfg/server.cfg:/server/csgo/csgo/cfg/server.cfg
       - /data/csgo/cfg/gamemode_competitive_server.cfg:/server/csgo/csgo/cfg/gamemode_competitive_server.cfg
       - /data/csgo/cfg/gotv.cfg:/server/csgo/csgo/cfg/gotv.cfg
+      - /data/csgo/addons:/server/csgo/addons
     restart: always
     environment:
       HOSTNAME: Wallhack
