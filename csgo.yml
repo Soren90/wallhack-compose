@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   csgo:
-    image: registry.teamzone.se/csgo/csgo-lan:0.1
+    image: soren90/csgo-lan:0.1
     stdin_open: true
     tty: true
     volumes:
