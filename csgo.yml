@@ -16,6 +16,9 @@ services:
       MAP: de_dust2
       RCON: pDjvm6Ugx3
     deploy:
+      resources:
+        limits:
+          memory: 10G
       placement:
           constraints: [node.labels.usage==game]
 
