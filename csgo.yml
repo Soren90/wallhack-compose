@@ -17,9 +17,9 @@ services:
       MAP: de_dust2
       RCON: phetto
     deploy:
-#      resources:
-#        reservations:
-#          memory: 13G
+      resources:
+        reservations:
+          memory: 13G
       placement:
           constraints: [node.labels.usage==game]
 
