@@ -16,7 +16,7 @@ services:
       HOSTNAME: Wallhack
       MAP: de_dust2
       RCON: phetto
-#    deploy:
+    deploy:
 #      resources:
 #        reservations:
 #          memory: 13G
