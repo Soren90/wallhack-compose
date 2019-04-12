@@ -21,7 +21,7 @@ services:
         reservations:
           memory: 13G
       placement:
-          constraints: [node.labels.usage==game]
+          constraints: [node.labels.usage==controller]
 
 networks:
   default:
