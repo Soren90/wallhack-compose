@@ -19,7 +19,7 @@ services:
     deploy:
       resources:
         reservations:
-          memory: 13G
+          memory: 1G
       placement:
           constraints: [node.labels.usage==game]
 
