@@ -15,11 +15,11 @@ services:
     environment:
       HOSTNAME: Wallhack
       MAP: de_dust2
-      RCON: pDjvm6Ugx3
+      RCON: phetto
     deploy:
-#      resources:
-#        limits:
-#          memory: 10G
+      resources:
+        limits:
+          memory: 1G
       placement:
           constraints: [node.labels.usage==game]
 
